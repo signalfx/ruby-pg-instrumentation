@@ -181,19 +181,22 @@ RSpec.describe PG::Instrumentation do
 
     it 'sets the error tag and log' do
       statement = 1234
+      error = nil
       begin
         conn.exec(statement)
       rescue => e
+        error = e
       end
 
       expected_tags = EXPECTED_TAGS.dup
       expected_tags['db.statement'] = statement.to_s
       expected_tags['error'] = true
+      expected_tags['sfx.error.kind'] = error.class.to_s 
+      expected_tags['sfx.error.message'] = error.to_s 
+      expected_tags['sfx.error.stack'] = error.backtrace.join('\n') 
 
       expect(tracer.spans.last.tags).to eq expected_tags
       expect(tracer.spans.last.operation_name).to eq 'pg.query'
-      expect(tracer.spans.last.logs.last[:key]).to eq('message')
-      expect(tracer.spans.last.logs.last[:value]).to eq('error')
     end
   end
 end
