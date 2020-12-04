@@ -12,7 +12,7 @@ This gem provides OpenTracing instrumentation for [pg](https://github.com/ged/ru
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pg-instrumentation'
+gem 'signalfx-pg-instrumentation'
 ```
 
 And then execute:
@@ -21,7 +21,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install pg-instrumentation
+    $ gem install signalfx-pg-instrumentation
 
 ## Usage
 
