@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "pg/instrumentation/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "pg-instrumentation"
+  spec.name          = "signalfx-pg-instrumentation"
   spec.version       = PG::Instrumentation::VERSION
   spec.authors       = ["SignalFx"]
   spec.email         = ["signalfx-oss@splunk.com"]
