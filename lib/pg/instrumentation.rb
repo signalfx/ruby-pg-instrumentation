@@ -164,13 +164,7 @@ module PG
           end
 
           def log_error(span, error)
-            span.set_tag('error', true)
-            span.log_kv(key: 'message',
-                        value: error.message,
-                        :error_kind => error.class.to_s,
-                        :error_object => error,
-                        :error_stack =>  error.backtrace.join("\n"))
-
+            span.record_exception(error)
             raise error
           end
         end # class_eval
